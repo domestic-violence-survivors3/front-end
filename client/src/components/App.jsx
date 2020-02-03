@@ -5,7 +5,8 @@ import "../css/App.css";
 import PrivateRoute from "./PrivateRoute"
 import SignUp from "./SignUp"; 
 import Login from "./Login";
-import Calculator from "./Calculator";
+// import PersonalForm from './components/PersonalForm'
+import ExpenseList from './ExpenseList'
 
 const App = () => {
   return (
@@ -23,7 +24,7 @@ const App = () => {
       </div>
 
       <Switch>
-        <PrivateRoute path="/calculator" component={Calculator} />
+        <PrivateRoute path="/expenses" component={ExpenseList} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route component={Login} />
