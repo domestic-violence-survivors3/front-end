@@ -11,12 +11,8 @@ const ExpenseList = (props) => {
 
     return (
         <div className='ExpenseList'>
-
-            <ExpenseHeader />
             <div>Personal Expenses{props.personalExpenses}</div>
             <div>Moving Expenses{props.moveExpenses}</div>
-
-
         </div>
     )
 }
