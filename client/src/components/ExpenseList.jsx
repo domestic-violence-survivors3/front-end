@@ -16,6 +16,7 @@ const ExpenseList = (props) => {
             <div>Personal Expenses{props.personalExpenses}</div>
             <div>Moving Expenses{props.moveExpenses}</div>
 
+
         </div>
     )
 }

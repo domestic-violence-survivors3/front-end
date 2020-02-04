@@ -6,7 +6,7 @@ import PrivateRoute from "./PrivateRoute"
 import SignUp from "./SignUp"; 
 import Login from "./Login";
 // import PersonalForm from './components/PersonalForm'
-import ExpenseList from './ExpenseList'
+import PersonalForm from './PersonalForm';
 
 const App = () => {
   return (
@@ -20,11 +20,11 @@ const App = () => {
         <Link to="/login">Login</Link>
       </div>
       <div>
-        <Link to="/expenses">Expense List</Link>
+        <Link to="/PersonalForm">Expense Form</Link>
       </div>
 
       <Switch>
-        <PrivateRoute path="/expenses" component={ExpenseList} />
+        <PrivateRoute path="/PersonalForm" component={PersonalForm} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route component={Login} />
