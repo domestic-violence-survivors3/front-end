@@ -112,7 +112,7 @@ const MoveForm = ({ values, errors, touched, status }, props) => {
 };
 
 const FormikMoveForm= withFormik({
-    mapPropsToValues({ transportation, food, healthInsurance,carInsurance,loans, otherExpense }) {
+    mapPropsToValues({ transportation, food, healthInsurance, carInsurance, loans, otherExpense }) {
         return {
             transportation: transportation || '',
             food: food || '',
