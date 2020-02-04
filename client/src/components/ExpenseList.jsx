@@ -11,19 +11,19 @@ const ExpenseList = (props) => {
         <div className='ExpenseList'>
             <nav>
                 <div className='nav-links'>
-            <NavLink className='personal-link' to='/personal-expenses'>
-                Personal Expenses
-            </NavLink>
-            <NavLink className='move-link' to='/move-expenses'>
-                Moving Expense
-                </NavLink>
-            </div>
+                    <NavLink className='personal-link' to='/personal-expenses'>
+                        Personal Expenses
+                    </NavLink>
+                    <NavLink className='move-link' to='/move-expenses'>
+                        Moving Expense
+                    </NavLink>
+                </div>
             </nav>
             <Switch>
                 <Route exact path='/personal-expenses' component={PersonalForm}/>
                 <Route path="/move-expenses" component={MoveForm}/>
             </Switch>
-            </div>
+        </div>
     )
 }
 
