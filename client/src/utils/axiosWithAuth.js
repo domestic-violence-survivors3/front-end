@@ -1,8 +1,8 @@
-import Axios from "axios";
+import axios from "axios";
 
 export const axiosWithAuth = () => {
-  return Axios.create({
-    baseURL: "http://localhost:5000",
+  return axios.create({
+    baseURL: "https://dvscalculator.herokuapp.com/",
     headers: {
       Authorization: localStorage.getItem("token")
     }

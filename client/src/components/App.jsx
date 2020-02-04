@@ -20,7 +20,7 @@ const App = () => {
         <Link to="/login">Login</Link>
       </div>
       <div>
-        <Link to="/expenses">ExpenseList</Link>
+        <Link to="/expenses">Expense List</Link>
       </div>
 
       <Switch>

@@ -12,15 +12,15 @@ const SignUp = ({ values, errors, touched, status }) => {
   //Submits ----
 
   const handleSubmit = (values, { setStatus, resetForm }) => {
-    axios.post(`http://localhost:5000/api/signup`, values)
+    axios.post(` https://dvscalculator.herokuapp.com/auth/register
+    `, values)
 
       .then(res => {
         setMessage([...message, values]);
         setStatus(res.data);
         resetForm();
         console.log(res, `success`);
-        localStorage.setItem("token", res.data.payload);
-        push("/calculator");
+        push(`/login`)
       })
       .catch(err => console.log(err))
       .finally();
@@ -45,18 +45,6 @@ const SignUp = ({ values, errors, touched, status }) => {
         {({ values }) => {
           return (
             <Form className='formbody'>
-              <Field 
-                className='formFields'
-                name='first name'
-                type='text'
-                placeholder='First Name'
-              />
-              <Field 
-                className='formFields'
-                name='last name'
-                type='text'
-                placeholder='Last Name'
-              />
               <Field
                 className='formFields'
                 name='username'
