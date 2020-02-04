@@ -1,132 +1,97 @@
 import React, { useState, useEffect } from 'react';
-import {withFormik, Form, Field } from 'formik'
-import { Link } from "react-router-dom";
-
+import { withFormik, Form, Field } from 'formik'
 import axios from 'axios'
 import * as Yup from 'yup';
-import styled from 'styled-components'
-import MoveExpense from './MoveExpense'
+import { BorderWrap, TitleHeader, FormWarp, FieldCta, ErrorPrompt } from '../assests/Styles'
+import MoveTotal from './MoveTotal'
 
-const TitleHeader = styled.h1`
-
-margin-bottom: -15px;
-width 33vw;
-margin 0 auto;
-padding: 15px 0;
-
-`
-
-const FormWarp = styled.div`
-    width: 33vw;
-    display:flex;
-    flex-direction:column;
-    padding: 20px 20px;
-    margin: 15px auto;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: stretch;
-    align-items: stretch;
-`;
-const FieldCta = styled.div`
-    display: flex;
-    flex-direction:column;
-    padding-bottom: 45px;
-    padding-left: 155px;
-    padding-right: 155px;
-`
-const ErrorPrompt = styled.p`
-    color:#8AC748;
-    margin-bottom:-20px;
-    margin-top:-2px;
-    font-weight: 600;
-`
-
-const BorderWrap = styled.div`
-width: 33vw;
-margin: 0 auto;
-padding-bottom: 32px;
-`
 
 const MoveForm = ({ values, errors, touched, status }, props) => {
 
 
     const [moveExpenses, setMoveExpenses] = useState([]);
 
-
     useEffect(() => {
         status && setMoveExpenses(moveExpenses => [...moveExpenses, status]);
     }, [status]);
     return (
         <div>
-                  
             <BorderWrap>
                 <TitleHeader>Moving Expenses</TitleHeader>
                 <Form>
                     <FormWarp>
+
                         <FieldCta>
-                            <label htmlFor='transportation'>Transportation</label>
-                            <Field id='transportation' value={values.transportation} type='number' name='transportation' style={{ padding: `5px` }} />
-                            {touched.transportation && errors.transportation && (<ErrorPrompt>{errors.transportation}</ErrorPrompt>)}
+                            <label htmlFor='housing'>
+                                <Field id='housing' value={values.housing} type='number' name='housing' placeholder='Housing' style={{ padding: `5px` }} />
+                                {touched.housing && errors.housing && (<ErrorPrompt>{errors.housing}</ErrorPrompt>)}
+                            </label>
+                        </FieldCta>
+                        <FieldCta><label>
+                            <Field id='rentalDeposit' value={values.rentalDeposit} type='number' name='rentalDeposit' placeholder='Rental Deposits' style={{ padding: `5px` }} />
+                            {touched.rentalDeposit && errors.rentalDeposit && (<ErrorPrompt>{errors.rentalDeposit}</ErrorPrompt>)}
+                        </label>
                         </FieldCta>
                         <FieldCta>
-                            <label htmlFor='food'>Food</label>
-                            <Field id='food'value={values.food} type='number' name='food'style={{ padding: `5px` }} />
-                            {touched.food && errors.food && (<ErrorPrompt>{errors.food}</ErrorPrompt>)}
+                            <label htmlFor='utilitySetup'>
+                                <Field id='utilitySetup' value={values.utilitySetup} type='number' name='utilitySetup' placeholder='Utiltity Setup' style={{ padding: `5px` }} />
+                                {touched.utilitySetup && errors.utilitySetup && (<ErrorPrompt>{errors.utilitySetup}</ErrorPrompt>)}
+                            </label>
                         </FieldCta>
                         <FieldCta>
-                            <label htmlFor='healthInsurance'>Health Insurance</label>
-                            <Field id='healthInsurance' value={values.healthInsurance} type='number' name='healthInsurance'style={{ padding: `5px` }} />
-                            {touched.healthInsurance && errors.healthInsurance && (<ErrorPrompt>{errors.healthInsurance}</ErrorPrompt>)}
+                            <label htmlFor='storage'>
+                                <Field id='storage' value={values.storage} type='number' name='storage' placeholder='Storage' style={{ padding: `5px` }} />
+                                {touched.storage && errors.storage && (<ErrorPrompt>{errors.storage}</ErrorPrompt>)}
+                            </label>
                         </FieldCta>
                         <FieldCta>
-                            <label htmlFor='carInsurance'>Car Insurance</label>
-                            <Field id='carInsurance'  value={values.carInsurance} type='number' name='carInsurance'style={{ padding: `5px` }} />
-                            {touched.carInsurance && errors.carInsurance && (<ErrorPrompt>{errors.carInsurance}</ErrorPrompt>)}
+                            <label htmlFor='incomeLoss'>
+                                <Field id='incomeLoss' value={values.incomeLoss} type='number' name='incomeLoss' placeholder='Income Loss' style={{ padding: `5px` }} />
+                                {touched.incomeLoss && errors.incomeLoss && (<ErrorPrompt>{errors.incomeLoss}</ErrorPrompt>)}
+                            </label>
                         </FieldCta>
                         <FieldCta>
-                            <label htmlFor='loans'>Loans</label>
-                            <Field id='loans' value={values.loans} type='number' name='loans'style={{ padding: `5px` }} />
-                            {touched.loans && errors.loans && (<ErrorPrompt>{errors.loans}</ErrorPrompt>)}
+                            <label htmlFor='otherExpenses'>
+                                <Field id='otherExpenses' value={values.otherExpenses} type='number' name='additionalExpenses' placeholder='Other Expense' style={{ padding: `5px` }} />
+                                {touched.otherExpenses && errors.otherExpenses && (<ErrorPrompt>{errors.additionalExpenses}</ErrorPrompt>)}
+                            </label>
                         </FieldCta>
-                        <FieldCta>
-                            <label htmlFor='otherExpense'>Other Expenses</label>
-                            <Field id='otherExpense' value={values.otherExpense} type='number' name='otherExpense'style={{ padding: `5px` }} />
-                            {touched.otherExpense && errors.otherExpense && (<ErrorPrompt>{errors.otherExpense}</ErrorPrompt>)}
-                        </FieldCta>
-{/* FIELD TEMPLATE
+
+                        {/* FIELD TEMPLATE
                         <FieldCta>
                             <label htmlFor=''></label>
                             <Field type='text' name='' placeholder='' style={{ padding: `5px` }} />
                             {touched. && errors. && (<ErrorPrompt>{errors.}</ErrorPrompt>)}
                         </FieldCta> */}
 
-           
+
                     </FormWarp>
                     <button type='submit'>Next</button>
                 </Form>
             </BorderWrap>
-            <MoveExpense moveExpenses={moveExpenses} />
-         
+
+            <MoveTotal moveExpenses={moveExpenses} />
+
         </div>
     )
 };
 
-const FormikMoveForm= withFormik({
-    mapPropsToValues({ transportation, food, healthInsurance, carInsurance, loans, otherExpense }) {
+const FormikMoveForm = withFormik({
+    mapPropsToValues({ housing, rentalDeposit, utilitySetup, storage, incomeLoss, otherExpense }) {
         return {
-            transportation: transportation || '',
-            food: food || '',
-            healthInsurance: healthInsurance || '',
-            carInsurance: carInsurance || '',
-            loans: loans || '',
+            housing: housing || '',
+            rentalDeposit: rentalDeposit || '',
+            utilitySetup: utilitySetup || '',
+            storage: storage || '',
+            incomeLoss: incomeLoss || '',
             otherExpense: otherExpense || ''
         };
     },
     /*Yup validating user input and error prompt*/
 
     validationSchema: Yup.object().shape({
-        transportation: Yup.string().min(0, 'Amount is to small')
-            .max(50, 'Amount is to large')
+        transportation: Yup.string().min(1, 'Please Enter Amount')
+
             .required('Amount Required')
 
     }),
@@ -136,15 +101,12 @@ const FormikMoveForm= withFormik({
     handleSubmit(values, { setStatus, resetForm }) {
         axios.post('https://reqres.in/api/users', values)
             .then(res => {
-                // console.log(res.data);
+                console.log(res.data);
                 setStatus(res.data);
-
                 resetForm();
             })
-
-       
             .catch(err => console.log(err.response));
     }
-})(MoveForm);
+},)(MoveForm);
 
 export default FormikMoveForm;
