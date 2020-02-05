@@ -19,7 +19,7 @@ const Login = ({ values, errors, touched, status }) => {
         setMessage([...message, values]);
         setStatus(res.data);
         resetForm();
-        console.log("Login.jsx Line 23, token", res.data.token)
+        console.log("Login.jsx Line 23, res.data", res.data)
         localStorage.setItem("token", res.data.token);
         alert(res.data.message)
         push("/");
