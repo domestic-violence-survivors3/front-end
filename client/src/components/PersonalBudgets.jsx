@@ -4,7 +4,7 @@ import { userFetch } from '../actions';
 import data from '../assets/data'
 import Dashboard from './Dashboard'
 
-const PersonalBudgets = (props) => {
+const PersonalBudgets = () => {
     
     const state = useSelector(state => state)
     const dispatch = useDispatch();
@@ -13,23 +13,22 @@ const PersonalBudgets = (props) => {
         dispatch(userFetch())
     }, [dispatch])
 
+    console.log("State from PersonalBudget line 16: ", state);
+
     // console.log(props)
     return(
         <div>
-            <h4>{state.transport}</h4>
-             <div className='entry'>
-                {data(item=> {
-                  return(
-                      <div>
-                          <Dashboard 
-                      key={item.id}
-                      firstname={item.firstname}
-                      personal={item.personal}
-                         />
-                      </div>
-                  )
-                },[])}
-            </div>
+            <h4>{state.data.user.username}</h4>
+             <ul>
+                 <li>Transportation: {state.data.personalBudget[0].transportation}</li>
+                 <li>Food: {state.data.personalBudget[0].food}</li>
+                 <li>Health Insurance: {state.data.personalBudget[0].healthInsurance}</li>
+                 <li>Car Insurance{state.data.personalBudget[0].carInsurance}</li>
+                 <li>Car Loans: {state.data.personalBudget[0].carLoans}</li>
+                 <li>Health Care: {state.data.personalBudget[0].healthCare}</li>
+                 <li>PersonalLoans: {state.data.personalBudget[0].personalLoans}</li>
+                 <li>Other: {state.data.personalBudget[0].other}</li>
+             </ul>
         </div>
     )
 }

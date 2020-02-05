@@ -50,7 +50,7 @@ const ExpenseHeader = () => {
           <Router>
             <nav>
               <Link to='/PersonalForm'>Personal Expense</Link>
-              <Link to='/dashboard'>Dashboard</Link>
+              <Link to='/Dashboard'>Dashboard</Link>
               <Link to='/MovingForm'>Moving Expense</Link>
             </nav>
             <div>
