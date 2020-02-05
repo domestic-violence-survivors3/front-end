@@ -37,7 +37,7 @@ const SignUp = ({ values, errors, touched, status }) => {
   // REturn STARTS HERE  - -------------
   return (
     <div>
-      <h1>My Form</h1>
+      <h2>Sign Up</h2>
       <Formik
         initialValues={{ username: ``, password: `` }}
         validationSchema={SignupSchema}
@@ -61,7 +61,7 @@ const SignUp = ({ values, errors, touched, status }) => {
               />
               <ErrorMessage name='password' component='div' className='red' />
               &nbsp;
-              <input type='submit' />
+              <input type='submit'/>
             </Form>
           );
         }}

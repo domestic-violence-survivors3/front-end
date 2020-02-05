@@ -3,7 +3,9 @@ import { Link, Route, Switch } from 'react-router-dom';
 import PersonalForm from './PersonalForm'
 import MoveForm from './MoveForm'
 import styled from 'styled-components'
-
+import Dashboard from "./Dashboard";
+import SignUp from "./SignUp";
+import Login from "./Login";
 const ExpenseHeader = () => {
 
   const HeaderWrap = styled.div`
@@ -45,26 +47,35 @@ const ExpenseHeader = () => {
 
       </div>
       <div>
-
       </div>
       {/* Form Header*/}
       <HeaderWrap>
         <header className='expense-header'>
-          <h1 className='expenseTitleH1'>Budget Freedom</h1>
+    <div>
+          <h1 className='expenseTitleH1'>Budget Freedom <span>  <Link to='/dashboard'>Dashboard</Link></span></h1>
+          </div>
           <nav>
             <Link to='/personal-form'>Personal Expense</Link>
             <Link to='/moving-form'>Moving Expense</Link>
           </nav>
           <div>
+
             <Switch>
               <Route path="/personal-form" component={PersonalForm} />
               <Route path="/moving-form" component={MoveForm} />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/signup" component={SignUp} />
+             <Route path="/login" component={Login} />
             </Switch>
           </div>
+          <Link to="/login">Login</Link>
+       <Link to="/signup">Sign Up</Link>
+
         </header>
+        
       </HeaderWrap>
       <div>
-    
+
       </div>
 
     </div>

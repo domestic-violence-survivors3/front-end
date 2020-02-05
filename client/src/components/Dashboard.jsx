@@ -1,15 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import ExpenseHeader from './ExpenseHeader';
-
-const Dashboard = () => {
-
+import PersonalBudget from './PersonalBudgets'
+const Dashboard = props => {
+// console.log(props.firstname)
   return(
-    <div>
-      <h1>Welcome to your Dashboard</h1>
-      <h2>Past Prices</h2>
-      <h2>Find a new Price</h2>
-    
+    <div className='dashboard-cta'>
+    <h2>Welcome to Your Dashboard!</h2>
+  <div className='dashboard-header'>
+    <h5 className='welcome-user'>Hello User</h5> 
+  <h5 className='last-budget'>Most Recent Budget<span></span></h5>
+  </div>  
+  <PersonalBudget />
+  <h3>{props.id}</h3>
+  
+    </div>
 
       <Router>
         <div className="dashboard">
@@ -25,4 +28,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard;
+export default Dashboard
