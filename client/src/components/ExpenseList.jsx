@@ -1,13 +1,7 @@
 import React from 'react'
 import ExpenseHeader from './ExpenseHeader'
 
-
-
-
 const ExpenseList = (props) => {
-    // const history = useHistory();
-    // console.log("history", history)
-
 
     return (
         <div className='ExpenseList'>

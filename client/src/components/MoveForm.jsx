@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from 'formik'
 import axios from 'axios'
 import * as Yup from 'yup';
 import { BorderWrap, TitleHeader, FormWarp, FieldCta, ErrorPrompt } from '../assests/Styles'
-import MoveTotal from './MoveTotal'
+import MoveTotal from './MoveTotal';
 
 const PersonalForm = ({ values, errors, touched, status }, props) => {
     const [expenses, setExpenses] = useState([]);
