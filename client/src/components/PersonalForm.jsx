@@ -14,7 +14,7 @@ const PersonalForm = ({ values, errors, touched, status }, props) => {
     return (
         <div>
             <BorderWrap>
-                <h2>Personal Expenses</h2>
+                <TitleHeader>Personal Expenses</TitleHeader>
                 <Form>
                     <FormWarp>
                         <FieldCta>

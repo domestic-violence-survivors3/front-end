@@ -14,6 +14,17 @@ const Dashboard = props => {
   
     </div>
 
+      <Router>
+        <div className="dashboard">
+        <Link to="/ExpenseHeader">Expenses</Link>
+          <Switch>
+            <Route path="/ExpenseHeader" component={ExpenseHeader}>
+              <ExpenseHeader />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </div>
   )
 }
 

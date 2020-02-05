@@ -38,7 +38,7 @@ const ExpenseHeader = () => {
   header {
     width:100%;
   }`
-
+  
   return (
     <div>
 

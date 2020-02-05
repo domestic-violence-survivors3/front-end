@@ -4,8 +4,6 @@ import PersonalForm from './PersonalForm'
 import MoveForm from './MoveForm'
 import {HeaderWrap} from '../assets/Styles'
 
-
-
 const ExpenseList = (props) => {
 
     return (
