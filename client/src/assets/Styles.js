@@ -57,5 +57,33 @@ export const ExpenseCta = styled.div`
     align-content: center;
     margin: 5px;
 `
+export const HeaderWrap = styled.div`
+display: flex;
+width:100%;
+color: #fffff;
 
-
+font-family: 'Architects Daughter', cursive;
+margin: 0 auto;
+h1{
+  one-edge-shadow:
+      -webkit-box-shadow: 0 8px 6px -6px #778899;
+         -moz-box-shadow: 0 8px 6px -6px #778899;
+              box-shadow: 0 8px 6px -6px #778899;
+  padding-bottom: 2.1rem;
+  padding-top: 1.0rem;
+  margin-top:-0.4rem;         
+  background:  #FDFED2;
+}
+a {
+ text-decoration:none;
+ padding:0.5rem;
+ font-size:1.2rem;
+ color:black;
+}
+nav {
+  display:flex;
+  justify-content:space-around;
+}
+header {
+  width:100%;
+}`

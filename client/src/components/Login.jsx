@@ -22,7 +22,7 @@ const Login = ({ values, errors, touched, status }) => {
         console.log("Login.jsx Line 23, token", res.data.token)
         localStorage.setItem("token", res.data.token);
         alert(res.data.message)
-        push("/expenses");
+        push("/ExpenseList");
       })
       .catch(err => console.log(err))
       .finally();
@@ -39,7 +39,7 @@ const Login = ({ values, errors, touched, status }) => {
   // REturn STARTS HERE  - -------------
   return (
     <div>
-      <h1>My Form</h1>
+      <h2>Login</h2>
       <Formik
         initialValues={{ username: ``, password: `` }}
         validationSchema={SignupSchema}
