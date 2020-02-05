@@ -22,7 +22,7 @@ const MoveExpense = (props) => {
                 console.log(total)
                 return <div>{total}</div>
             })}
-        </PersonalBox>
+        </MoveBox>
     )
 }
 
