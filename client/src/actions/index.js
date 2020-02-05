@@ -2,11 +2,13 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 import { DATA_FAILURE, DATA_START, DATA_SUCCESS } from "../reducers";
 
-export const userFetch = () => dispatch => {
-  dispatch({ type: DATA_START });
+const userID = localStorage.getItem("userID")
 
+export const userFetch = () => dispatch => {
+
+  dispatch({ type: DATA_START });
   axiosWithAuth()
-    .get("https://dvscalculator.herokuapp.com/users/1")
+    .get(`https://dvscalculator.herokuapp.com/users/${userID}`)
     .then(res => {
       console.log('response from line 9 actions: ', res.data)
       dispatch({ type: DATA_SUCCESS, payload: res.data })
@@ -16,4 +18,18 @@ export const userFetch = () => dispatch => {
         console.log(err)
         dispatch({ type: DATA_FAILURE, payload: err })
       })
+}
+
+export const userSend = user => dispatch => {
+  dispatch({ type: DATA_START });
+
+  axiosWithAuth()
+    .post(`https://dvscalculator.herokuapp.com/users/${userID}/personal`)
+    .then(res => {
+      console.log("actions line 29 user data: ", res)
+      dispatch({ type: DATA_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: DATA_FAILURE, payload: err.response })
+    })
 }
