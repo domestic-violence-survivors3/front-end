@@ -3,7 +3,7 @@ import { Link, Route, Switch} from 'react-router-dom';
 import PersonalForm from './PersonalForm'
 import MoveForm from './MoveForm'
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const ExpenseHeader = () => {
 
@@ -46,14 +46,14 @@ const ExpenseHeader = () => {
                 <header className='expense-header'>
                     <h1 className='expenseTitleH1'>Budget Freedom</h1>
                     <nav>
-                        <Link to='/personal-form'>Personal Expense</Link>
-                        <Link to='/moving-form'>Moving Expense</Link>
+                        <Link to='/PersonalForm' component={PersonalForm}>Personal Expense</Link>
+                        <Link to='/MovingForm' component={MoveForm}>Moving Expense</Link>
                     </nav>
                     <div>
                       <Switch>
-                        <Route path="/personal-form" component={PersonalForm} />
-                        <Route path="/moving-form" component={MoveForm} />
-                        </Switch>
+                        <Route path="/PersonalForm" component={PersonalForm} />
+                        <Route path="/MovingForm" component={MoveForm} />
+                      </Switch>
                     </div>
 
                 </header>
