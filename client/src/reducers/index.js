@@ -10,11 +10,23 @@ const uuidv4 = require("uuid/v4");
 
 const initialState = {
   user: {
-    id: uuidv4(),
+    firstname: "",
+    lastname: "",
     username: "",
-    prices: {
-      
-    }
+    personal:[
+      { 
+        id: null,
+        title: "",
+        transport: 0,
+        food: 0,
+        rent: 0,
+        utilities: 0,
+        car: 0,
+        loans:0,
+        other: 0,
+        notes: ""
+      },
+    ]
   },
   editing: false,
   isloading: false,
