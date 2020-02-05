@@ -1,31 +1,22 @@
-import React, {
-    useEffect,
-    useState
-  } from "react";
-  import axios from "axios";
-  import data from '../assets/data'
-  import Dashboard from './Dashboard'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { userFetch } from '../actions';
+import data from '../assets/data'
+import Dashboard from './Dashboard'
 
 const PersonalBudgets = (props) => {
-    const [budgets, setBudgets] = useState([])
+    
+    const state = useSelector(state => state)
+    const dispatch = useDispatch();
 
-    let john = data[0];
-    let personal = john.personal;
-    // console.log(john)
+    useEffect(() => {
+        dispatch(userFetch())
+    }, [dispatch])
 
-    useEffect(() =>{
-        axios.get(data)
-        .then(res=> {
-            console.log(res)
-           setBudgets(res)
-        }).catch(err=> {
-            console.log(err)
-        });
-    })
     // console.log(props)
     return(
         <div>
-            <h4>{props.transport}</h4>
+            <h4>{state.transport}</h4>
              <div className='entry'>
                 {data(item=> {
                   return(
