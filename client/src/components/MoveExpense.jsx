@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PersonalBox = styled.div`
+const MoveBox = styled.div`
     height: 15vh;
     width: 100%;
     display: flex;
@@ -15,11 +15,11 @@ const PersonalBox = styled.div`
 const MoveExpense = (props) => {
 
     return (
-        <PersonalBox>
-            {props.moveExpenses.map((props) => {
-        let arr = Object.values(props)
-const total = arr.reduce((sum, value) => (typeof value == 'number' ? sum + value : sum), 0)
-console.log(total)
+        <MoveBox>
+            {props.MoveExpenses.map((props) => {
+                let arr = Object.values(props)
+                const total = arr.reduce((sum, value) => (typeof value == 'number' ? sum + value : sum), 0)
+                console.log(total)
                 return <div>{total}</div>
             })}
         </PersonalBox>
