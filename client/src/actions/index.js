@@ -8,9 +8,8 @@ export const userFetch = () => dispatch => {
 
   dispatch({ type: DATA_START });
   axiosWithAuth()
-    .get(`https://dvscalculator.herokuapp.com/users/${userID}`)
+    .get(`https://cors-anywhere.herokuapp.com/https://dvscalculator.herokuapp.com/users/${userID}`)
     .then(res => {
-      console.log('response from line 9 actions: ', res.data)
       dispatch({ type: DATA_SUCCESS, payload: res.data })
     })
     .catch(
@@ -24,10 +23,9 @@ export const userSend = user => dispatch => {
   dispatch({ type: DATA_START });
 
   axiosWithAuth()
-    .post(`https://dvscalculator.herokuapp.com/users/${userID}/personal`)
+    .post(`https://cors-anywhere.herokuapp.com/https://dvscalculator.herokuapp.com/users/${userID}/personal`)
     .then(res => {
-      console.log("actions line 29 user data: ", res)
-      dispatch({ type: DATA_SUCCESS, payload: res.data })
+      dispatch({ type: DATA_SUCCESS, payload: res })
     })
     .catch(err => {
       dispatch({ type: DATA_FAILURE, payload: err.response })

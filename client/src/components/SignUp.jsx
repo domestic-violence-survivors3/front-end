@@ -12,14 +12,13 @@ const SignUp = ({ values, errors, touched, status }) => {
   //Submits ----
 
   const handleSubmit = (values, { setStatus, resetForm }) => {
-    axios.post(` https://dvscalculator.herokuapp.com/auth/register
+    axios.post(`https://cors-anywhere.herokuapp.com/https://dvscalculator.herokuapp.com/auth/register
     `, values)
 
       .then(res => {
         setMessage([...message, values]);
         setStatus(res.data);
         resetForm();
-        console.log(res, `success`);
         push(`/Login`)
       })
       .catch(err => console.log(err))

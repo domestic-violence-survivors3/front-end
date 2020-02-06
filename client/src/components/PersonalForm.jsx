@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik'
-import axios from 'axios'
 import * as Yup from 'yup';
 import { BorderWrap, TitleHeader, FormWarp, FieldCta, ErrorPrompt } from '../assets/Styles'
 import PersonalTotal from './PersonalTotal'
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const PersonalForm = ({ values, errors, touched, status }, props) => {
     const [expenses, setExpenses] = useState([]);
@@ -42,15 +42,15 @@ const PersonalForm = ({ values, errors, touched, status }, props) => {
                             </label>
                         </FieldCta>
                         <FieldCta>
-                            <label htmlFor='loans'>
-                                <Field id='loans' value={values.loans} type='number' name='loans' placeholder='Loans' style={{ padding: `5px` }} />
-                                {touched.loans && errors.loans && (<ErrorPrompt>{errors.loans}</ErrorPrompt>)}
+                            <label htmlFor='personalLoans'>
+                                <Field id='personalLoans' value={values.personalLoans} type='number' name='personalLoans' placeholder='Loans' style={{ padding: `5px` }} />
+                                {touched.personalLoans && errors.personalLoans && (<ErrorPrompt>{errors.personalLoans}</ErrorPrompt>)}
                             </label>
                         </FieldCta>
                         <FieldCta>
-                            <label htmlFor='otherExpense'>
-                                <Field id='otherExpense' value={values.otherExpense} type='number' name='otherExpense' placeholder='Other Expenses' style={{ padding: `5px` }} />
-                                {touched.otherExpense && errors.otherExpense && (<ErrorPrompt>{errors.otherExpense}</ErrorPrompt>)}
+                            <label htmlFor='other'>
+                                <Field id='other' value={values.other} type='number' name='other' placeholder='Other Expenses' style={{ padding: `5px` }} />
+                                {touched.other && errors.other && (<ErrorPrompt>{errors.other}</ErrorPrompt>)}
                             </label>
                         </FieldCta>
                         {/* FIELD TEMPLATE
@@ -71,14 +71,14 @@ const PersonalForm = ({ values, errors, touched, status }, props) => {
 };
 
 const FormikPersonalForm = withFormik({
-    mapPropsToValues({ transportation, food, healthInsurance, carInsurance, loans, otherExpense }) {
+    mapPropsToValues({ transportation, food, healthInsurance, carInsurance, personalLoans, other }) {
         return {
             transportation: transportation || '',
             food: food || '',
             healthInsurance: healthInsurance || '',
             carInsurance: carInsurance || '',
-            loans: loans || '',
-            otherExpense: otherExpense || ''
+            personalLoans: personalLoans || '',
+            other: other || ''
         };
     },
     /*Yup validating user input and error prompt*/
@@ -91,9 +91,10 @@ const FormikPersonalForm = withFormik({
     }),
 
     handleSubmit(expenses, { setStatus, resetForm }) {
-        axios.post('https://reqres.in/api/users', expenses)
+        const userID = localStorage.getItem("userID")
+        axiosWithAuth()
+        .post(`https://cors-anywhere.herokuapp.com/https://dvscalculator.herokuapp.com/users/${userID}/personal`, expenses)
             .then(res => {
-                // console.log(res.data);
                 setStatus(res.data);
                 resetForm();
             })
