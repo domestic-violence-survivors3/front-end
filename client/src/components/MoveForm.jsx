@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik'
-import axios from 'axios'
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import * as Yup from 'yup';
 import { BorderWrap, TitleHeader, FormWarp, FieldCta, ErrorPrompt } from '../assets/Styles'
 import MoveTotal from './MoveTotal'
@@ -91,14 +91,16 @@ const FormikPersonalForm = withFormik({
     }),
 
     handleSubmit(expenses, { setStatus, resetForm }) {
-        axios.post('https://reqres.in/api/users', expenses)
+        const userID = localStorage.getItem("userID")
+        axiosWithAuth()
+        .post(`https://dvscalculator.herokuapp.com/users/${userID}/relocate`, expenses)
             .then(res => {
-                // console.log(res.data);
+                console.log(res.data);
                 setStatus(res.data);
                 resetForm();
             })
             .catch(err => console.log(err.response));
     }
-}, [])(PersonalForm);
+    }, [])(PersonalForm);
 
 export default FormikPersonalForm;
