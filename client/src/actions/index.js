@@ -1,4 +1,4 @@
-import axiosWithAuth from "../utils/axiosWithAuth";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 import { DATA_START, DATA_SUCCESS, DATA_FAILURE } from "../reducers";
 

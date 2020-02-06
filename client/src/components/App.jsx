@@ -1,12 +1,22 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import './App.css';
+import SignUp from './SignUp';
+import Login from './Login';
+import PrivateRoute from "./PrivateRoute"
+import ExpenseHeader from './ExpenseHeader';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <PrivateRoute exact path="/" component={ExpenseHeader}/>
+          <Route path="/SignUp" component={SignUp} />
+          <Route path="/Login" component={Login} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
