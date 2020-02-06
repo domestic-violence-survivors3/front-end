@@ -95,6 +95,7 @@ const FormikPersonalForm = withFormik({
         axiosWithAuth()
         .post(`https://cors-anywhere.herokuapp.com/https://dvscalculator.herokuapp.com/users/${userID}/personal`, expenses)
             .then(res => {
+                console.log("RES FROM PERSONALFORM LINE 98: ", res)
                 setStatus(res.data);
                 resetForm();
             })
