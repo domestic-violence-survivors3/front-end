@@ -19,7 +19,6 @@ const PersonalExpense = (props) => {
             {props.personalExpenses.map((props) => {
                 let arr = Object.values(props)
                 const total = arr.reduce((sum, value) => (typeof value == 'number' ? sum + value : sum), 0)
-                console.log(total)
                 return <div>{total}</div>
             })}
         </PersonalBox>

@@ -92,11 +92,9 @@ const FormikPersonalForm = withFormik({
 
     handleSubmit(expenses, { setStatus, resetForm }) {
         const userID = localStorage.getItem("userID")
-        console.log("Personal Form line 95, expenses: ", expenses)
         axiosWithAuth()
         .post(`https://cors-anywhere.herokuapp.com/https://dvscalculator.herokuapp.com/users/${userID}/personal`, expenses)
             .then(res => {
-                console.log(res.data);
                 setStatus(res.data);
                 resetForm();
             })

@@ -61,7 +61,6 @@ export default (state = initialState, action) => {
         isloading: true
       };
     case DATA_SUCCESS:
-      console.log("reducer line 65 action:", action.payload.personalBudget[0].transportation)
       return{
         ...state,
         isloading: false,

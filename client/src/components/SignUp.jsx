@@ -19,7 +19,6 @@ const SignUp = ({ values, errors, touched, status }) => {
         setMessage([...message, values]);
         setStatus(res.data);
         resetForm();
-        console.log(res, `success`);
         push(`/Login`)
       })
       .catch(err => console.log(err))

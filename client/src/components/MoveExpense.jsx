@@ -19,7 +19,6 @@ const MoveExpense = (props) => {
             {props.MoveExpenses.map((props) => {
                 let arr = Object.values(props)
                 const total = arr.reduce((sum, value) => (typeof value == 'number' ? sum + value : sum), 0)
-                console.log(total)
                 return <div>{total}</div>
             })}
         </MoveBox>

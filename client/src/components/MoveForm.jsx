@@ -95,7 +95,6 @@ const FormikPersonalForm = withFormik({
         axiosWithAuth()
         .post(`https://dvscalculator.herokuapp.com/users/${userID}/relocate`, expenses)
             .then(res => {
-                console.log(res.data);
                 setStatus(res.data);
                 resetForm();
             })

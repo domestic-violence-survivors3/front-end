@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userFetch } from '../actions';
-import data from '../assets/data'
-import Dashboard from './Dashboard'
 
 const PersonalBudgets = () => {
     
@@ -13,9 +11,6 @@ const PersonalBudgets = () => {
         dispatch(userFetch())
     }, [dispatch])
 
-    console.log("State from PersonalBudget line 16: ", state);
-
-    // console.log(props)
     return(
         <div>
             <h4>{state.data.user.username}</h4>
@@ -33,4 +28,4 @@ const PersonalBudgets = () => {
     )
 }
 
-export default PersonalBudgets
+export default PersonalBudgets;
