@@ -47,6 +47,10 @@ export default (state = initialState, action) => {
         ...state,
         isloading: false,
         data: {
+          // user: {
+          //   //id: localStorage.getItem("userID"),
+          //   username: action.payload.user.username
+          // },
           personalBudget: [
              {
               id: action.payload.personalBudget[0].id,
