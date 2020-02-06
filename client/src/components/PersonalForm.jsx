@@ -4,9 +4,25 @@ import * as Yup from 'yup';
 import { BorderWrap, TitleHeader, FormWarp, FieldCta, ErrorPrompt } from '../assets/Styles'
 import PersonalTotal from './PersonalTotal'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { FORM_STATE, RESET_FORM, EDITING_PERSONAL_STATE } from "../reducers";
+import { userEdit } from "../actions";
+import { useSelector, useDispatch } from "react-redux";
 
 const PersonalForm = ({ values, errors, touched, status }, props) => {
     const [expenses, setExpenses] = useState([]);
+
+    const editing = useSelector(state => state.editing);
+    const dispatch = useDispatch();
+
+    const handleFormEdit = e => {
+        e.preventDefault
+
+        return(
+            dispatch(userEdit(user, userID)) &
+            dispatch({ type: EDITING_PERSONAL_STATE }) &
+            dispatch({ type: RESET_FORM })
+        )
+    }
 
     useEffect(() => {
         status && setExpenses(personalExpenses => [...personalExpenses, status]);
@@ -93,7 +109,7 @@ const FormikPersonalForm = withFormik({
     handleSubmit(expenses, { setStatus, resetForm }) {
         const userID = localStorage.getItem("userID")
         axiosWithAuth()
-        .post(`https://cors-anywhere.herokuapp.com/https://dvscalculator.herokuapp.com/users/${userID}/personal`, expenses)
+        .post(`/users/${userID}/personal`, expenses)
             .then(res => {
                 console.log("RES FROM PERSONALFORM LINE 98: ", res)
                 setStatus(res.data);

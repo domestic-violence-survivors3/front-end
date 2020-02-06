@@ -12,7 +12,7 @@ const Login = ({ values, errors, touched, status }) => {
   //Submits ----
 
   const handleSubmit = (values, { setStatus, resetForm }) => {
-    axios.post(`https://cors-anywhere.herokuapp.com/https://dvscalculator.herokuapp.com/auth/login
+    axios.post(`https://dvscalculator.herokuapp.com/auth/login
     `, values)
 
       .then(res => {
