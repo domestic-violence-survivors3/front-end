@@ -1,5 +1,6 @@
 import React from "react"
 import View from './GetRequest'
+import ExpenseTally from "./ExpenseTally"
 
 
 
@@ -13,13 +14,12 @@ console.log(props.expenses)
       <div className='dashboard-cta'>
         <h2>Welcome to Your Dashboard!</h2>
         <div className='dashboard-header'> 
-        <h3>{props.expenses}</h3>
           {/* <h5 className='last-budget'>Most Recent Budget<span></span></h5> */}
         </div>  
         <h3>GET REQUEST ON A DIME</h3>
         <div className="dashboard">
-          <div><View/></div>
-          <h3>{props.expenses}</h3>
+       <View/>
+
 
  </div>
      

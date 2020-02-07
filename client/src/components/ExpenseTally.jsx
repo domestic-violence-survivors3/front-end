@@ -1,20 +1,23 @@
 import React from 'react';
 
-const PersonalTotal = (props) => {
 
+
+const ExpenseTally = (props) => {
+  console.log()
     return (
-
         <div>
-            {
+        {
 
-                props.expenses.map((props) => {
-                    let arr = Object.values(props)
-                    const total = arr.reduce((sum, value) => (typeof value == 'number' ? sum + value : sum), 0)
-                    console.log(total)
-                    return total
-                })}
-        </div>
-    )
+           
+            props.expense.map((props) => {
+
+                let arr = Object.values(props)
+                const total = arr.reduce((sum, value) => (typeof value == 'number' ? sum + value : sum), 0)
+                console.log(total)
+                return total
+            })}
+    </div>
+)
 }
 
-export default PersonalTotal;
+export default ExpenseTally;

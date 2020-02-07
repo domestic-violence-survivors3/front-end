@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { withFormik, Form, Field } from 'formik'
 import axios from 'axios'
 import * as Yup from 'yup';
+import ExpenseTally from './ExpenseTally'
 import { BorderWrap,  FormWarp, FieldCta, ErrorPrompt } from '../assets/Styles'
 
 
@@ -12,15 +13,16 @@ const MoveForm = ({ values, errors, touched, status }, props) => {
     const { push } = useHistory();
 
     useEffect(() => {
-        status && setExpenses(moveExpenses => [...moveExpenses, status],
-            push('/dashboard'));
-    }, [expenses]);
+        status && setExpenses(expense => [...expense, status]);
+    }, [status]);
     return (
         <div>
+               
             <BorderWrap>
                 <div>
                 <h2>Moving Expenses</h2>
                 </div>
+                <div><h3> <ExpenseTally expense={expenses}/></h3></div>
                 <Form>
                     <FormWarp>
                         <FieldCta>
@@ -71,7 +73,7 @@ const MoveForm = ({ values, errors, touched, status }, props) => {
                                 {touched.movingTruck && errors.movingTruck && (<ErrorPrompt>{errors.movingTruck}</ErrorPrompt>)}
                             </label>
                         </FieldCta>
-                        
+
                         <FieldCta>
                             <label htmlFor='incomeLoss '>
                                 <Field id='incomeLoss ' value={values.incomeLoss } type='number' name='incomeLoss ' placeholder='Income Loss ' style={{ padding: `5px` }} />
@@ -92,8 +94,9 @@ const MoveForm = ({ values, errors, touched, status }, props) => {
                         </FieldCta> */}
                     </FormWarp>
                     <button type='submit' >Next</button>
-
+             
                 </Form>
+        
             </BorderWrap>
            
 

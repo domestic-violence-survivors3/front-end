@@ -70,7 +70,8 @@ const PersonalForm = ({ values, errors, touched, status }, props) => {
                                 {touched.otherExpense && errors.otherExpense && (<ErrorPrompt>{errors.otherExpense}</ErrorPrompt>)}
                             </label>
                         </FieldCta>
-                        <ExpenseTally expenses={expenses}/>
+                        <ExpenseTally expense={expenses}/>
+                   
                     </FormWarp>
                     <button type='submit'>Next</button>
                 
@@ -112,7 +113,7 @@ const FormikPersonalForm = withFormik({
     }),
 
     handleSubmit(expenses, { setStatus, resetForm }) {
-        axios.post('https://reqres.in/api/users', expenses)
+        axios.post('https://dvscalculator.herokuapp.com/', expenses)
             .then(res => {
              console.log(res.data)
                 setStatus(res.data);
