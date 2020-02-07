@@ -3,10 +3,10 @@ import View from './GetRequest'
 
 
 
-const Dashboard = ({film}) => {
+const Dashboard = (props) => {
 
 
-console.log(film)
+console.log(props.expenses)
 
   return(
     <div className="dashboard">
@@ -22,8 +22,7 @@ console.log(film)
  </div>
      
       </div>
-    
-
+  
     </div>
   )
 

@@ -4,28 +4,26 @@ import { withFormik, Form, Field } from 'formik'
 import axios from 'axios'
 import * as Yup from 'yup';
 import { BorderWrap, TitleHeader, FormWarp, FieldCta, ErrorPrompt } from '../assets/Styles'
+import Dashboard from './Dashboard';
+import ExpenseTally from './ExpenseTally'
+
 
 
 const PersonalForm = ({ values, errors, touched, status }, props) => {
     const [expenses, setExpenses] = useState([]);
-
     useEffect(() => {
-        status && setExpenses(personalExpenses =>
-            [...personalExpenses, props.target.value, status] ,     
-     );  
-    }, []);
-
-
-
+        status && setExpenses(personalExpenses => [...personalExpenses, status]);
+    }, [status]);
     return (
         <div>
+               
             <BorderWrap>
                 <TitleHeader>Personal Expenses</TitleHeader>
                 <Form>
-                <FormWarp>
+                <FormWarp >
                         <FieldCta>
                             <label htmlFor='transportation' style={{ color: `black` }}>
-                                <Field id='transportation' value={values.transportation} type='number' name='transportation' placeholder='Transporation' style={{ padding: `5px` }} />
+                                <Field id='transportation' value={values.transportation}  type='number' name='transportation' placeholder='Transporation' style={{ padding: `5px` }} />
                                 {touched.transportation && errors.transportation && (<ErrorPrompt>{errors.transportation}</ErrorPrompt>)}
                             </label>
                         </FieldCta>
@@ -71,9 +69,16 @@ const PersonalForm = ({ values, errors, touched, status }, props) => {
                                 {touched.otherExpense && errors.otherExpense && (<ErrorPrompt>{errors.otherExpense}</ErrorPrompt>)}
                             </label>
                         </FieldCta>
+                        <ExpenseTally expenses={expenses}/>
                     </FormWarp>
                     <button type='submit'>Next</button>
+                
                 </Form>
+
+                {expenses.map(item=> {
+                    // return <Dashboard key={item} expenses={item}/>
+                })}
+          
             </BorderWrap>
           
 
@@ -83,9 +88,10 @@ const PersonalForm = ({ values, errors, touched, status }, props) => {
 
 const FormikPersonalForm = withFormik({
 
-    mapPropsToValues({user_id, id, transportation, food, healthInsurance, carInsurance, healthCare, carLoans, personalLoans, other }) {
+    mapPropsToValues({ user_id, id, transportation, food, healthInsurance, carInsurance, healthCare, carLoans, personalLoans, other }) {
         return {
-            id: id || '',
+  
+  
             transportation: transportation || '',
             food: food || '',
             healthInsurance: healthInsurance || '',
@@ -94,7 +100,7 @@ const FormikPersonalForm = withFormik({
             carLoans: carLoans || '',
             personalLoans: personalLoans || '',
             other: other || '',
-            user_id:user_id
+   
         };
     },
     /*Yup validating user input and error prompt*/
@@ -109,10 +115,8 @@ const FormikPersonalForm = withFormik({
     handleSubmit(expenses, { setStatus, resetForm }) {
         axios.post('https://reqres.in/api/users', expenses)
             .then(res => {
-            
-                console.log(res.data)
+             console.log(res.data)
                 setStatus(res.data);
-            
                 resetForm();
             })
             .catch(err => console.log(err.response));
