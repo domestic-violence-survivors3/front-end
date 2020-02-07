@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { withFormik, Form, Field } from 'formik'
 import axios from 'axios'
 import * as Yup from 'yup';
 import { BorderWrap, TitleHeader, FormWarp, FieldCta, ErrorPrompt } from '../assets/Styles'
-import PersonalTotal from './PersonalTotal'
+
 
 const PersonalForm = ({ values, errors, touched, status }, props) => {
     const [expenses, setExpenses] = useState([]);
 
     useEffect(() => {
-        status && setExpenses(personalExpenses => [...personalExpenses, status]);
-    }, [status]);
+        status && setExpenses(personalExpenses =>
+            [...personalExpenses, props.target.value, status] ,     
+     );  
+    }, []);
+
+
+
     return (
         <div>
             <BorderWrap>
-                <h2>Personal Expenses</h2>
+                <TitleHeader>Personal Expenses</TitleHeader>
                 <Form>
-                    <FormWarp>
+                <FormWarp>
                         <FieldCta>
                             <label htmlFor='transportation' style={{ color: `black` }}>
                                 <Field id='transportation' value={values.transportation} type='number' name='transportation' placeholder='Transporation' style={{ padding: `5px` }} />
@@ -42,43 +48,53 @@ const PersonalForm = ({ values, errors, touched, status }, props) => {
                             </label>
                         </FieldCta>
                         <FieldCta>
-                            <label htmlFor='loans'>
-                                <Field id='loans' value={values.loans} type='number' name='loans' placeholder='Loans' style={{ padding: `5px` }} />
-                                {touched.loans && errors.loans && (<ErrorPrompt>{errors.loans}</ErrorPrompt>)}
+                            <label htmlFor='healthCare'>
+                                <Field id='healthCare' value={values.healthCare} type='number' name='healthCare' placeholder='Health Care' style={{ padding: `5px` }} />
+                                {touched.healthCare && errors.healthCare && (<ErrorPrompt>{errors.healthCare}</ErrorPrompt>)}
                             </label>
                         </FieldCta>
                         <FieldCta>
-                            <label htmlFor='otherExpense'>
-                                <Field id='otherExpense' value={values.otherExpense} type='number' name='otherExpense' placeholder='Other Expenses' style={{ padding: `5px` }} />
+                            <label htmlFor='carLoans'>
+                                <Field id='carLoans' value={values.carLoans} type='number' name='carLoans' placeholder='Car Loans' style={{ padding: `5px` }} />
+                                {touched.carLoans && errors.carLoans && (<ErrorPrompt>{errors.carLoans}</ErrorPrompt>)}
+                            </label>
+                        </FieldCta>
+                        <FieldCta>
+                            <label htmlFor='personalLoans'>
+                                <Field id='personalLoans' value={values.otherExpense} type='number' name='personalLoans' placeholder='Personal Loan' style={{ padding: `5px` }} />
                                 {touched.otherExpense && errors.otherExpense && (<ErrorPrompt>{errors.otherExpense}</ErrorPrompt>)}
                             </label>
                         </FieldCta>
-                        {/* FIELD TEMPLATE
                         <FieldCta>
-                            <label htmlFor=''></label>
-                            <Field type='text' name='' placeholder='' style={{ padding: `5px` }} />
-                            {touched. && errors. && (<ErrorPrompt>{errors.}</ErrorPrompt>)}
-                        </FieldCta> */}
+                            <label htmlFor='other'>
+                                <Field id='other' value={values.other} type='number' name='other' placeholder='Other Expenses' style={{ padding: `5px` }} />
+                                {touched.otherExpense && errors.otherExpense && (<ErrorPrompt>{errors.otherExpense}</ErrorPrompt>)}
+                            </label>
+                        </FieldCta>
                     </FormWarp>
-                    <button type='submit' >Next</button>
-
+                    <button type='submit'>Next</button>
                 </Form>
             </BorderWrap>
-            <PersonalTotal personalExpenses={expenses} />
+          
 
         </div>
     )
 };
 
 const FormikPersonalForm = withFormik({
-    mapPropsToValues({ transportation, food, healthInsurance, carInsurance, loans, otherExpense }) {
+
+    mapPropsToValues({user_id, id, transportation, food, healthInsurance, carInsurance, healthCare, carLoans, personalLoans, other }) {
         return {
+            id: id || '',
             transportation: transportation || '',
             food: food || '',
             healthInsurance: healthInsurance || '',
             carInsurance: carInsurance || '',
-            loans: loans || '',
-            otherExpense: otherExpense || ''
+            healthCare: healthCare || '',
+            carLoans: carLoans || '',
+            personalLoans: personalLoans || '',
+            other: other || '',
+            user_id:user_id
         };
     },
     /*Yup validating user input and error prompt*/
@@ -93,8 +109,10 @@ const FormikPersonalForm = withFormik({
     handleSubmit(expenses, { setStatus, resetForm }) {
         axios.post('https://reqres.in/api/users', expenses)
             .then(res => {
-                // console.log(res.data);
+            
+                console.log(res.data)
                 setStatus(res.data);
+            
                 resetForm();
             })
             .catch(err => console.log(err.response));

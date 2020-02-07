@@ -1,24 +1,33 @@
-import React from 'react';
-import PersonalBudget from './PersonalBudgets'
-const Dashboard = props => {
-// console.log(props.firstname)
-  return(
-    <div className='dashboard-cta'>
-    <h2>Welcome to Your Dashboard!</h2>
-  <div className='dashboard-header'>
-    <h5 className='welcome-user'>Hello User</h5> 
-  <h5 className='last-budget'>Most Recent Budget<span></span></h5>
-  </div>  
-  <PersonalBudget />
-  <h3>{props.id}</h3>
-  
-    </div>
+import React from "react"
+import View from './GetRequest'
 
+
+
+const Dashboard = ({film}) => {
+
+
+console.log(film)
+
+  return(
+    <div className="dashboard">
+      <div className='dashboard-cta'>
+        <h2>Welcome to Your Dashboard!</h2>
+        <div className='dashboard-header'> 
+          {/* <h5 className='last-budget'>Most Recent Budget<span></span></h5> */}
+        </div>  
+        <h3>GET REQUEST ON A DIME</h3>
+        <div className="dashboard">
+          <div><View/></div>
+
+ </div>
+     
+      </div>
     
 
-
-   
+    </div>
   )
+
+
 }
 
 export default Dashboard

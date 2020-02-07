@@ -22,7 +22,6 @@ const Login = ({ values, errors, touched, status }) => {
         console.log("Login.jsx Line 23, token", res.data.token)
         localStorage.setItem("token", res.data.token);
         alert(res.data.message)
-        push("/");
       })
       .catch(err => console.log(err))
       .finally();
@@ -51,7 +50,7 @@ const Login = ({ values, errors, touched, status }) => {
                 className='formFields'
                 name='username'
                 type='text'
-                placeholder='name'
+                placeholder='Username'
               />
               <ErrorMessage name='name' component='div' className='red' />
               <Field

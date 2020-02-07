@@ -57,23 +57,16 @@ export const ExpenseCta = styled.div`
     align-content: center;
     margin: 5px;
 `
+
 export const HeaderWrap = styled.div`
 display: flex;
+flex-direction:column;
 width:100%;
 color: #fffff;
 
 font-family: 'Architects Daughter', cursive;
 margin: 0 auto;
-h1{
-  one-edge-shadow:
-      -webkit-box-shadow: 0 8px 6px -6px #778899;
-         -moz-box-shadow: 0 8px 6px -6px #778899;
-              box-shadow: 0 8px 6px -6px #778899;
-  padding-bottom: 2.1rem;
-  padding-top: 1.0rem;
-  margin-top:-0.4rem;         
-  background:  #FDFED2;
-}
+
 a {
  text-decoration:none;
  padding:0.5rem;
@@ -87,3 +80,25 @@ nav {
 header {
   width:100%;
 }`
+
+
+export const LogoHeaderWrap = styled.div `
+display:flex;
+justify-content:space-evenly;
+height:75px;
+background:  #FDFED2;
+padding-bottom: 2.1rem;
+
+img {
+  height:5.4rem;
+  margin-top:10px;
+}
+h1 {
+  font-size:2.1rem;
+  margin-left:-200px;
+
+
+}
+`
+export const LogoTxtAdj = styled.div `
+margin-left:-800px`

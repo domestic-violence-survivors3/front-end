@@ -20,7 +20,7 @@ const SignUp = ({ values, errors, touched, status }) => {
         setStatus(res.data);
         resetForm();
         console.log(res, `success`);
-        push(`/Login`)
+        push(`/login`)
       })
       .catch(err => console.log(err))
       .finally();
