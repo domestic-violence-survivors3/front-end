@@ -11,6 +11,7 @@ import ExpenseTally from './ExpenseTally'
 
 const PersonalForm = ({ values, errors, touched, status }, props) => {
     const [expenses, setExpenses] = useState([]);
+    const { push } = useHistory();
     useEffect(() => {
         status && setExpenses(personalExpenses => [...personalExpenses, status]);
     }, [status]);
@@ -75,9 +76,7 @@ const PersonalForm = ({ values, errors, touched, status }, props) => {
                 
                 </Form>
 
-                {expenses.map(item=> {
-                    // return <Dashboard key={item} expenses={item}/>
-                })}
+             
           
             </BorderWrap>
           

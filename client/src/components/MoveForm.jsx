@@ -12,7 +12,7 @@ const MoveForm = ({ values, errors, touched, status }, props) => {
     const { push } = useHistory();
 
     useEffect(() => {
-        status && setExpenses(moveExpenses => [...moveExpenses, props.target.value, status],
+        status && setExpenses(moveExpenses => [...moveExpenses, status],
             push('/dashboard'));
     }, [expenses]);
     return (
