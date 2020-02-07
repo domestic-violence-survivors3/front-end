@@ -8,7 +8,7 @@ export const userFetch = () => dispatch => {
 
   dispatch({ type: DATA_START });
   axiosWithAuth()
-    .get(`https://cors-anywhere.herokuapp.com/https://dvscalculator.herokuapp.com/users/${userID}/personal`)
+    .get(`/users/${userID}/`)
     .then(res => {
       console.log("RES.DATA FROM ACTIONS LINE 13: ", res.data)
       dispatch({ type: DATA_SUCCESS, payload: res.data })
@@ -24,7 +24,7 @@ export const userSend = user => dispatch => {
   dispatch({ type: DATA_START });
 
   axiosWithAuth()
-    .post(`https://cors-anywhere.herokuapp.com/https://dvscalculator.herokuapp.com/users/${userID}/personal`)
+    .post(`/users/${userID}/personal`)
     .then(res => {
       dispatch({ type: DATA_SUCCESS, payload: res })
     })
@@ -32,3 +32,16 @@ export const userSend = user => dispatch => {
       dispatch({ type: DATA_FAILURE, payload: err.response })
     })
 }
+
+// export const userEdit = (userID, id) => dispatch => {
+//   dispatch({ type: DATA_START });
+//   axiosWithAuth()
+//     .put(`/${userID}/personal/`)
+//     .then(res => {
+//       console.log("FRIENDS DATA FROM ACTIONS LINE 41: ", res.data)
+//       dispatch({ type: DATA_SUCCESS, payload: res.data })
+//     })
+//     .catch(err => {
+//       dispatch({ type: DATA_FAILURE, payload: err.response })
+//     });
+// }
