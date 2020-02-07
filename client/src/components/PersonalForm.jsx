@@ -11,18 +11,18 @@ import { useSelector, useDispatch } from "react-redux";
 const PersonalForm = ({ values, errors, touched, status }, props) => {
     const [expenses, setExpenses] = useState([]);
 
-    const editing = useSelector(state => state.editing);
-    const dispatch = useDispatch();
+    // const editing = useSelector(state => state.editing);
+    // const dispatch = useDispatch();
 
-    const handleFormEdit = e => {
-        e.preventDefault
+    // const handleFormEdit = e => {
+    //     e.preventDefault
 
-        return(
-            dispatch(userEdit(user, userID)) &
-            dispatch({ type: EDITING_PERSONAL_STATE }) &
-            dispatch({ type: RESET_FORM })
-        )
-    }
+    //     return(
+    //         dispatch(userEdit(user, userID)) &
+    //         dispatch({ type: EDITING_PERSONAL_STATE }) &
+    //         dispatch({ type: RESET_FORM })
+    //     )
+    // }
 
     useEffect(() => {
         status && setExpenses(personalExpenses => [...personalExpenses, status]);

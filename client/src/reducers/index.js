@@ -67,6 +67,7 @@ export default(state = initialState, action) => {
           },
           personalBudget: [
             {
+              ...state.data.personalBudget[0],
               id: action.payload.personalBudget[0].id,
               transportation: action.payload.personalBudget[0].transportation,
               food: action.payload.personalBudget[0].food,
@@ -92,6 +93,7 @@ export default(state = initialState, action) => {
           // },
           personalBudget: [
             {
+              ...state.data.personalBudget[0],
               id: action.payload.personalBudget[0].id,
               transportation: action.payload.personalBudget[0].transportation,
               food: action.payload.personalBudget[0].food,
